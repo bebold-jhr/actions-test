@@ -1,0 +1,28 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - 'master'
+    paths-ignore:
+      - '**/README.md'
+      
+jobs:
+  deploy-sandbox:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        region: [ 'eu-central-1', 'eu-west-1' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install software packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
+          sudo apt-get install terraform
+          sudo apt-get install awscli
+      - name: test
+        run: |
+          terraform -version
+          awscli -version
+          jq -version
+          echo ${{ matrix.region }}
