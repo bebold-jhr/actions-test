@@ -25,7 +25,7 @@ jobs:
       - name: test
         run: |
           terraform -version
-          jq -version
+          jq --version
           echo ${{ matrix.region }}
   deploy-prod:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
       - name: test
         run: |
           terraform -version
-          jq -version
+          jq --version
           echo ${{ matrix.region }}
