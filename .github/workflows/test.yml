@@ -47,4 +47,5 @@ jobs:
         run: |
           terraform -version
           jq --version
+          echo "test"
           echo ${{ matrix.region }}
