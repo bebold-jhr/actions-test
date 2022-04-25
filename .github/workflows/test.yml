@@ -7,7 +7,7 @@ on:
       - '**/README.md'
       
 jobs:
-  deploy-sandbox:
+  deploy-nonprod:
     runs-on: ubuntu-latest
     environment: nonprod
     strategy:
@@ -28,6 +28,7 @@ jobs:
           jq --version
           echo ${{ matrix.region }}
   deploy-prod:
+    needs: deploy-nonprod
     runs-on: ubuntu-latest
     environment: prod
     strategy:
