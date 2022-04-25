@@ -9,6 +9,7 @@ on:
 jobs:
   deploy-sandbox:
     runs-on: ubuntu-latest
+    environment: nonprod
     strategy:
       matrix:
         region: [ 'eu-central-1', 'eu-west-1' ]
