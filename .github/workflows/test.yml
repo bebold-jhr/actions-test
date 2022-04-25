@@ -14,10 +14,13 @@ jobs:
         region: [ 'eu-central-1', 'eu-west-1' ]
     steps:
       - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.7
       - name: Install software packages
         run: |
           sudo apt-get update
-          sudo apt-get install jq terraform awscli
+          sudo apt-get install jq awscli
       - name: test
         run: |
           terraform -version
