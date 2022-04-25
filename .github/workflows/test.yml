@@ -18,15 +18,31 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ matrix.region }}
       - name: Install software packages
         run: |
           sudo apt-get update
-          sudo apt-get install jq awscli
+          sudo apt-get install jq
+      - name: test
+        run: |
+          terraform -version
+          awscli -version
+          jq -version
+          echo ${{ matrix.region }}
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    strategy:
+      matrix:
+        region: [ 'eu-central-1', 'eu-west-1' ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.7
+      - name: Install software packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
       - name: test
         run: |
           terraform -version
