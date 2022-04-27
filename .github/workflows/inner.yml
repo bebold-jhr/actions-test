@@ -25,6 +25,7 @@ jobs:
           echo "Folder 1 deploy: ${{ matrix.region }}"
 
   folder2:
+    needs: folder1
     name: "Folder 2 - ${{inputs.account_id}}-${{inputs.region}}"
     runs-on: ubuntu-latest
     steps:
