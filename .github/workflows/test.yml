@@ -19,7 +19,8 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
-      - uses: ./.github/workflows/inner.yaml@main
-        with:
-          account_id: ${{ matrix.account }}
-          region: ${{ matrix.region }}
+  deploy:
+    uses: ./.github/workflows/inner.yaml
+    with:
+      account_id: ${{ matrix.account }}
+      region: ${{ matrix.region }}
