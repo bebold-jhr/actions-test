@@ -20,3 +20,9 @@ jobs:
     uses: ./.github/workflows/get-by-type.yaml
     with:
       type: "infra"
+  deploy:
+    needs: fetch
+    uses: ./.github/workflows/inner.yaml
+    with:
+      regions: "[\"eu-central-1\", \"eu-west-1\"]"
+      account_id: "123"
