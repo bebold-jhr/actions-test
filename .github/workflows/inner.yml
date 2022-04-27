@@ -3,7 +3,7 @@ name: "Terraform plan workflow"
 on:
   workflow_call:
     inputs:
-      region:
+      regions:
         required: true
         type: string
       account_id:
@@ -12,14 +12,17 @@ on:
 
 jobs:
   folder1:
-    name: "Folder 1 - ${{inputs.account_id}}-${{inputs.region}}"
+    name: "Folder 1"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        region: ${{fromJson(inputs.regions)}}
     steps:
       - name: "Checkout the Terraform code"
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "Folder 1 deploy"
+          echo "Folder 1 deploy: ${{ matrix.region }}"
 
   folder2:
     name: "Folder 2 - ${{inputs.account_id}}-${{inputs.region}}"
@@ -29,4 +32,4 @@ jobs:
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "Folder 2 deploy"
+          echo "Folder 2 deploy - home region"
