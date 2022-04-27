@@ -7,7 +7,7 @@ on:
       - '**/README.md'
       
 jobs:
-  deploy-nonprod:
+  setup:
     runs-on: ubuntu-latest
     environment: nonprod
     strategy:
@@ -19,11 +19,9 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
-      - name: Install software packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install jq
-      - name: test
-        run: |
-          echo ${{ matrix.region }}
-          echo ${{ matrix.account }}
+  deploy:
+    uses: ./.github/workflows/inner.yaml
+    needs: setup
+    with:
+      account_id: ${{ matrix.account }}
+      region: ${{ mattrix.region }}
