@@ -25,4 +25,4 @@ jobs:
     uses: ./.github/workflows/inner.yml
     with:
       regions: "[\"eu-central-1\", \"eu-west-1\"]"
-      account_id: ${{jobs.fetch.outputs.id_list}}
+      account_id: ${{needs.fetch.outputs.id_list}}
