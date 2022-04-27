@@ -9,17 +9,17 @@ on:
     outputs:
       id_list:
         description: "The first output string"
-        value: ${{ jobs.retrieve.outputs.id_list }}
+        value: ${{ jobs.retrieve.outputs.output1 }}
 
 jobs:
   retrieve:
     name: "Retrieving"
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
     steps:
       - name: "Checkout the Terraform code"
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "Folder 1 deploy"
-    outputs:
-      id_list: "[\"1324\", \"9982\"]"
+          echo "::set-output name=test::[\"1324\", \"9982\"]"
