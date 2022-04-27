@@ -1,0 +1,23 @@
+name: "Terraform plan workflow"
+
+on:
+  workflow_call:
+    inputs:
+      type:
+        required: true
+        type: string
+
+jobs:
+  folder1:
+    name: "Retrieving"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout the Terraform code"
+        uses: actions/checkout@v2
+      - name: deploy
+        run: |
+          echo "Folder 1 deploy"
+    outputs:
+      id_list:
+        - "1324"
+        - "9982"
