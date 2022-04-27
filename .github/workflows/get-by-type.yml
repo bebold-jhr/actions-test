@@ -18,6 +18,4 @@ jobs:
         run: |
           echo "Folder 1 deploy"
     outputs:
-      id_list:
-        - "1324"
-        - "9982"
+      id_list: "[\"1324\", \"9982\"]"
