@@ -16,10 +16,11 @@ jobs:
     name: "Retrieving"
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.deploy.outputs.test }}
+      output1: ${{ steps.step2.outputs.test }}
     steps:
       - name: "Checkout the Terraform code"
         uses: actions/checkout@v2
-      - name: deploy
+      - id: "step2"
+        name: deploy
         run: |
           echo "::set-output name=test::[\"1324\", \"9982\"]"
