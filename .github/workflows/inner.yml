@@ -1,0 +1,32 @@
+name: "Terraform plan workflow"
+
+on:
+  workflow_call:
+    inputs:
+      region:
+        required: true
+        type: string
+      account_id:
+        required: true
+        type: string
+
+jobs:
+  folder1:
+    name: "Folder 1 - ${{inputs.account_id}}-${{inputs.region}}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout the Terraform code"
+        uses: actions/checkout@v2
+      - name: deploy
+        run: |
+          echo "Folder 1 deploy"
+
+  folder2:
+    name: "Folder 2 - ${{inputs.account_id}}-${{inputs.region}}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: deploy
+        run: |
+          echo "Folder 1 deploy"
