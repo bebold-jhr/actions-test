@@ -29,6 +29,9 @@ jobs:
     needs: folder1
     name: "Folder 2 - ${{inputs.account_id}}-${{inputs.region}}"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        account_id: ${{fromJson(inputs.account_id)}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
