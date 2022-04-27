@@ -24,4 +24,4 @@ jobs:
     needs: setup
     with:
       account_id: ${{ matrix.account }}
-      region: ${{ mattrix.region }}
+      region: ${{ matrix.region }}
