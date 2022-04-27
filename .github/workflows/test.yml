@@ -17,12 +17,12 @@ jobs:
           terraform_version: 1.1.7
   fetch:
     needs: setup
-    uses: ./.github/workflows/get-by-type.yaml
+    uses: ./.github/workflows/get-by-type.yml
     with:
       type: "infra"
   deploy:
     needs: fetch
-    uses: ./.github/workflows/inner.yaml
+    uses: ./.github/workflows/inner.yml
     with:
       regions: "[\"eu-central-1\", \"eu-west-1\"]"
       account_id: "123"
