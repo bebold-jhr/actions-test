@@ -17,12 +17,13 @@ jobs:
     strategy:
       matrix:
         region: ${{fromJson(inputs.regions)}}
+        account_id: ${{fromJson(inputs.account_id)}}
     steps:
       - name: "Checkout the Terraform code"
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "Folder 1 deploy: ${{ matrix.region }}"
+          echo "Folder 1 deploy: ${{ matrix.account_id }}" - ${{ matrix.region }}"
 
   folder2:
     needs: folder1
@@ -33,4 +34,4 @@ jobs:
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "Folder 2 deploy - home region"
+          echo "Folder 2 deploy - ${{ matrix.account_id }}" - home region"
