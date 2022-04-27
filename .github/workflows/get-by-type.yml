@@ -6,9 +6,13 @@ on:
       type:
         required: true
         type: string
+    outputs:
+      id_list:
+        description: "The first output string"
+        value: ${{ jobs.retrieve.outputs.id_list }}
 
 jobs:
-  folder1:
+  retrieve:
     name: "Retrieving"
     runs-on: ubuntu-latest
     steps:
