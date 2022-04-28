@@ -15,6 +15,8 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
+      - name: test
+        run: echo "${{github.job}}"
   fetch:
     needs: setup
     uses: ./.github/workflows/get-by-type.yml
