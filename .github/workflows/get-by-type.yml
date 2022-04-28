@@ -11,6 +11,9 @@ on:
         description: "The first output string"
         value: ${{ jobs.retrieve.outputs.output1 }}
 
+env:
+  testVal: "my-value"
+
 jobs:
   retrieve:
     name: "Retrieving"
@@ -23,4 +26,5 @@ jobs:
       - id: "step2"
         name: deploy
         run: |
+          echo "${{ env.testVal }}"
           echo "::set-output name=test::[\"1324\", \"9982\"]"
