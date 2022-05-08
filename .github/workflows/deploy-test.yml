@@ -1,0 +1,10 @@
+name: "deploy - test"
+on:
+  pull_request:
+    branches:
+      - "main"
+      
+jobs:
+  inital:
+    runs-on: ubuntu-latest
+    run: echo "does sth initial"
