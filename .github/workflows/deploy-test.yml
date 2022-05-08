@@ -7,4 +7,5 @@ on:
 jobs:
   inital:
     runs-on: ubuntu-latest
-    run: echo "does sth initial"
+    steps:
+      - run: echo "does sth initial"
