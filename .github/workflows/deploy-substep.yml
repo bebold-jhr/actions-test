@@ -1,0 +1,11 @@
+on:
+  workflow_run:
+    workflows: ["deploy - test"]
+    types:
+      - completed
+
+jobs:
+  inital:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "does additional steps"
