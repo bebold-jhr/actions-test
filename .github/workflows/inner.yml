@@ -23,7 +23,8 @@ jobs:
         uses: actions/checkout@v2
       - name: deploy
         run: |
-          echo "${{ context }}"
+          echo "${{ github }}"
+          echo "${{ job }}"
           echo "Folder 1 deploy: ${{ matrix.account_id }} - ${{ matrix.region }}"
 
   folder2:
