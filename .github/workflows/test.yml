@@ -1,4 +1,4 @@
-name: Deploy
+name: CHECK
 on:
   workflow_dispatch:
   push:
