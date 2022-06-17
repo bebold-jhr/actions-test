@@ -7,31 +7,11 @@ on:
     paths-ignore:
       - '**/README.md'
       
-env:
-  home_region: "eu-central-1"
-  regions: "[\"eu-central-1\", \"eu-west-1\"]"
-      
 jobs:
   setup:
     runs-on: ubuntu-latest
     environment: nonprod
     steps:
-      - uses: actions/checkout@v2
-      - uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.1.7
       - name: test
         run: |
-          echo "${{github.job}}"
-          echo "${{env.regions}}"
-  fetch:
-    needs: setup
-    uses: ./.github/workflows/get-by-type.yml
-    with:
-      type: "infra"
-  deploy:
-    needs: fetch
-    uses: ./.github/workflows/inner.yml
-    with:
-      regions: "[\"eu-central-1\", \"eu-west-1\"]"
-      account_id: ${{needs.fetch.outputs.id_list}}
+          echo "test"
