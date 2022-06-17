@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: check branch
         run: |
-          if  [[ "${github.ref}" != "refs/heads/main" ]]; then
+          if  [[ "${GITHUB_REF}" != "refs/heads/main" ]]; then
             echo "Selected branch is not main"
             exit 1
           fi
